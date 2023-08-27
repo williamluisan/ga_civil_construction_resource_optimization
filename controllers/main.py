@@ -1,7 +1,7 @@
 import config.constants as constants
-import helpers.file as file_helper
+from controllers.file import File
 
 class Main:
     def execute():
-        excel_file = file_helper.OpenPyxlReadExcel(constants.MAIN_EXCEL_FILENAME)
-        print(excel_file)
+        # load the main file
+        file = File(constants.MAIN_EXCEL_FILENAME, constants.MAIN_EXCEL_SHEET_NAME)
