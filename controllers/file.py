@@ -18,5 +18,8 @@ class File:
     def get_sheet_value(self, cellname: str) -> any:
         return self._sheet[cellname].value
     
-    def get_max_rows(self) -> int:
+    def get_max_row(self) -> int:
         return self._sheet.max_row
+    
+    def get_max_column(self) -> int:
+        return self._sheet.max_column 
