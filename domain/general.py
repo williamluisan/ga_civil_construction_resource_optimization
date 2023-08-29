@@ -3,7 +3,7 @@ class General:
     This class is to handle the general domain of civil engineering calculation
     """
 
-    def get_total_of_workday_compare_to_targeted_unit(OH_coefficient: float, unit: str = None) -> (int, str):
+    def get_total_of_workday_compare_to_targeted_unit(OH_coefficient: float, unit: str = None) -> (float, str):
         """
         Args:
             OH_coefficient (int): OH = Orang Hari (OH)
