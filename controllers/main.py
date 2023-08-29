@@ -11,4 +11,4 @@ class Main:
             J_val = row[h_general.letter_to_array_index("J")].value
             K_val = row[h_general.letter_to_array_index("K")].value
 
-            print(f'{J_val} {K_val}')
+            
