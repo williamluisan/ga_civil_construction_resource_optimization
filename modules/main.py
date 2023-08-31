@@ -1,6 +1,6 @@
 import config.constants as constants
 import helpers.general as h_general
-from controllers.file import File
+from modules.file import File
 from domain.general import *
 
 class Main:

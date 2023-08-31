@@ -1,4 +1,4 @@
-from controllers.main import Main
+from modules.main import Main
 
 def main():
     Main.execute()
