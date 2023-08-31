@@ -11,3 +11,6 @@ def letter_to_array_index(column_letter):
         index = index * 26 + (ord(char) - base)
 
     return index - 1
+
+def format_float_two_decimal_points(value: float) -> float:
+    return format(value, ".2f")

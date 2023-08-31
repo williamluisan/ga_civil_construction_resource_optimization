@@ -3,7 +3,7 @@ class General:
     This class is to handle the general domain of civil engineering calculation
     """
 
-    def get_total_of_workday_compare_to_targeted_unit(OH_coefficient: float, unit: str = None) -> (float, str):
+    def get_capability_of_one_worker_to_complete_in_one_day_compare_to_targeted_unit(OH_coefficient: float, unit: str = None) -> (float, str):
         """
         Args:
             OH_coefficient (int): OH = Orang Hari (OH)
@@ -15,3 +15,6 @@ class General:
         total_of_workday = 1 / OH_coefficient
         return total_of_workday, unit
 
+    def get_total_days_to_work_by_total_workers_compare_to_targeted_unit(capability_of_one_day_work_per_one_worker: float, total_of_worker: int, targeted_unit_amount: float) -> float:
+        result = targeted_unit_amount / (capability_of_one_day_work_per_one_worker * total_of_worker)
+        return result
