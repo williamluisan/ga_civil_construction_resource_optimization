@@ -29,7 +29,7 @@ class Main:
                 ### generate random solutions should start from here
                 total_of_workers = 1
                 Q_val = total_of_workers
-                total_days_of_working = General.get_total_days_to_work_by_total_workers_compare_to_targeted_unit(capability_of_one_day_work_per_one_worker, total_of_workers, targeted_unit_amount)
+                total_days_of_working = General.get_total_days_to_work_by_total_workers_compare_to_targeted_units(capability_of_one_day_work_per_one_worker, total_of_workers, targeted_unit_amount)
                 R_val = h_general.format_float_two_decimal_points(total_days_of_working)
                 
                 print(f'{counter}| {B_val}. {C_val}: {O_val} {P_val} = {Q_val}/{R_val} Days', end = "\n")
