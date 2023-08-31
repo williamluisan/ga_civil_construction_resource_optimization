@@ -18,3 +18,7 @@ class General:
     def get_total_days_to_work_by_total_workers_compare_to_targeted_units(capability_of_one_day_work_per_one_worker: float, total_of_worker: int, targeted_unit_amount: float) -> float:
         result = targeted_unit_amount / (capability_of_one_day_work_per_one_worker * total_of_worker)
         return result
+    
+    def get_total_cost_by_unit_defined_price_and_total_of_workers(unit_defined_price: float, total_of_workers: int) -> float:
+        result = unit_defined_price * total_of_workers
+        return result
