@@ -23,14 +23,20 @@ class Main:
             # do calculation if the row met the certain condition 
             # in this case (J col must be 'OH' and K col must be 'Pekerja')
             if J_val == "OH" and K_val == "Pekerja":
-                capability_of_one_day_work_per_one_worker, P_val = General.get_capability_of_one_worker_to_complete_in_one_day_compare_to_targeted_unit(float(I_val), D_val)
+                capability_of_one_day_work_per_one_worker, P_val = General.get_capability_of_one_worker_to_complete_in_one_day_compare_to_targeted_unit(
+                    float(I_val), D_val
+                )
                 targeted_unit_amount = E_val
                 unit_defined_price = L_val
 
                 ### generate random solutions should start from here
                 total_of_workers = 1
-                total_days_of_working = General.get_total_days_to_work_by_total_workers_compare_to_targeted_units(capability_of_one_day_work_per_one_worker, total_of_workers, targeted_unit_amount)
-                total_cost_by_unit_defined_price_and_total_of_workers = General.get_total_cost_by_unit_defined_price_and_total_of_workers(unit_defined_price, total_of_workers)
+                total_days_of_working = General.get_total_days_to_work_by_total_workers_compare_to_targeted_units(
+                    capability_of_one_day_work_per_one_worker, total_of_workers, targeted_unit_amount
+                )
+                total_cost_by_unit_defined_price_and_total_of_workers = General.get_total_cost_by_unit_defined_price_and_total_of_workers(
+                    unit_defined_price, total_of_workers
+                )
                 
                 O_val = h_general.format_float_two_decimal_points(capability_of_one_day_work_per_one_worker)
                 Q_val = total_of_workers
