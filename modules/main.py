@@ -13,8 +13,6 @@ class Main:
 
         for idx, row in enumerate(Main.File.loaded_sheet().iter_rows()):
             row_number = idx + 1
-            B_val = row[h_general.letter_to_array_index("B")].value
-            C_val = row[h_general.letter_to_array_index("C")].value
             D_val = row[h_general.letter_to_array_index("D")].value
             E_val = row[h_general.letter_to_array_index("E")].value
             I_val = row[h_general.letter_to_array_index("I")].value
