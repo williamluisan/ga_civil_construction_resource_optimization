@@ -18,7 +18,7 @@ class RandomSolutions:
                 unit_defined_price = data[v_data][constants.L_COLUMN_INDEX_NAME]
                 capability_of_one_day_work_per_one_worker = data[v_data][constants.O_COLUMN_INDEX_NAME]
 
-                # random solution for total of workers per individual (chromosome)
+                # TODO: random solution for total of workers per individual (chromosome)
                 # should have more logic here, cannot mere a full random
                 # ...
                 total_of_workers_solution = random.randint(1, 10)

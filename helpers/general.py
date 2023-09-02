@@ -1,3 +1,5 @@
+import json
+
 def letter_to_array_index(column_letter):
     """
     to convert the corresponding letter to its order in the alphabet
@@ -14,3 +16,6 @@ def letter_to_array_index(column_letter):
 
 def format_string_float_two_decimal_points(value: float) -> str:
     return format(value, ".2f")
+
+def json_dumps_pretty_print(data: any):
+    return json.dumps(data, indent = 4)
