@@ -2,7 +2,6 @@ from modules.file import File
 from domain.general import *
 from domain.individual import *
 import config.constants as constants
-import helpers.general as h_general
 import json
 
 class Main:

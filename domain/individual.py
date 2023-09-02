@@ -4,7 +4,7 @@ import helpers.general as h_general
 
 
 class Individual:
-    def create_initial_individual(file: File) -> dict:
+    def create_first_individual(file: File) -> dict:
         result = {}
 
         for idx, row in enumerate(file.loaded_sheet().iter_rows()):
