@@ -1,7 +1,7 @@
 from modules.file import File
 from domain.general import *
 import helpers.general as h_general
-
+import config.constants as constants
 
 class Individual:
     def create_first_individual(file: File) -> dict:
@@ -24,7 +24,7 @@ class Individual:
                 capability_of_one_day_work_per_one_worker, P_val = General.get_capability_of_one_worker_to_complete_in_one_day_compare_to_targeted_unit(
                     float(I_val), D_val
                 )
-                targeted_unit_amount = E_val
+                targeted_unit_amount = float(E_val)
                 unit_defined_price = L_val
 
                 total_of_workers = 1
@@ -37,13 +37,12 @@ class Individual:
 
                 # row number as main index of the dictionary
                 result[str(row_number)] = {
-                    "[O]capability_of_one_day_work_per_one_worker": 
-                        h_general.format_float_two_decimal_points(capability_of_one_day_work_per_one_worker),
-                    "[Q]total_of_workers": total_of_workers,
-                    "[R]total_days_of_working": 
-                        h_general.format_float_two_decimal_points(total_days_of_working),
-                    "[T]total_cost_by_unit_defined_price_and_total_of_workers": 
-                        total_cost_by_unit_defined_price_and_total_of_workers
+                    constants.E_COLUMN_INDEX_NAME: targeted_unit_amount,
+                    constants.L_COLUMN_INDEX_NAME: unit_defined_price,
+                    constants.O_COLUMN_INDEX_NAME: capability_of_one_day_work_per_one_worker,
+                    constants.Q_COLUMN_INDEX_NAME: total_of_workers,
+                    constants.R_COLUMN_INDEX_NAME: total_days_of_working,
+                    constants.T_COLUMN_INDEX_NAME: total_cost_by_unit_defined_price_and_total_of_workers
                 }
         
         return result

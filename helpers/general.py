@@ -12,5 +12,5 @@ def letter_to_array_index(column_letter):
 
     return index - 1
 
-def format_float_two_decimal_points(value: float) -> float:
+def format_string_float_two_decimal_points(value: float) -> str:
     return format(value, ".2f")
