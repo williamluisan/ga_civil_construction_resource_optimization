@@ -30,9 +30,8 @@ class Main:
                     "total_days_of_working": sum_total_days_of_working,
                     "total_cost_of_workers": sum_total_cost_of_workers,
                 }
-                h_general.json_dumps_pretty_print(solution[v_solution]["result"])
 
-            # h_general.json_dumps_pretty_print(solution)
+            h_general.json_dumps_pretty_print(solution)
 
             return
         
