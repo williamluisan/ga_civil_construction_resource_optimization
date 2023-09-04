@@ -17,16 +17,22 @@ class Main:
         # create random solutions
         random_solutions = RandomSolutions(first_individual)
         first_solution = random_solutions.create_random_solutions()
-        
+
         # initial solution/recommendation
         solution = first_solution
-        sum_total_of_workers = 999999999
-        sum_total_days_of_working = 999999999
-        sum_total_cost_of_workers = 999999999
 
         # GA loop starts (to find the best solution, then stop)
         while True:
             for v_solution in solution:
-                solution_with_fitness_function = FitnessFunction.calculate_fitness_function(solution[v_solution])
-                return
+                sum_total_of_workers, sum_total_days_of_working, sum_total_cost_of_workers = FitnessFunction.calculate_fitness_function(solution[v_solution])
+                solution[v_solution]["result"] = {
+                    "total_of_workers": sum_total_of_workers,
+                    "total_days_of_working": sum_total_days_of_working,
+                    "total_cost_of_workers": sum_total_cost_of_workers,
+                }
+                h_general.json_dumps_pretty_print(solution[v_solution]["result"])
+
+            # h_general.json_dumps_pretty_print(solution)
+
             return
+        
