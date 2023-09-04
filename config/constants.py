@@ -1,6 +1,8 @@
 MAIN_EXCEL_FILENAME = "./files/template_format.xlsx"
 MAIN_EXCEL_SHEET_NAME = "Template Format Utama"
 
+LARGEST_INTEGER_CONSTANT_VALUE = 999999999
+
 TOTAL_INDIVIDUAL_PER_POPULATION = 10
 
 E_COLUMN_INDEX_NAME = "[E]targeted_unit_amount"
