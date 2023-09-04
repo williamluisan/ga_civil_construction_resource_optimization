@@ -13,4 +13,3 @@ class FitnessFunction:
             sum_total_cost_of_workers += solution[v_data][constants.T_COLUMN_INDEX_NAME]
 
         return sum_total_of_workers, sum_total_days_of_working, sum_total_cost_of_workers
-        # print(h_general.json_dumps_pretty_print(data))
