@@ -16,7 +16,7 @@ class Main:
 
         # create random solutions
         random_solutions = RandomSolutions(first_individual)
-        first_solution = random_solutions.create_random_solutions()
+        first_solution = random_solutions.create()
 
         # initial solution/recommendation
         solution = first_solution
@@ -24,7 +24,7 @@ class Main:
         # GA loop starts (to find the best solution, then stop)
         while True:
             for v_solution in solution:
-                sum_total_of_workers, sum_total_days_of_working, sum_total_cost_of_workers = FitnessFunction.calculate_fitness_function(solution[v_solution])
+                sum_total_of_workers, sum_total_days_of_working, sum_total_cost_of_workers = FitnessFunction.calculate(solution[v_solution])
                 solution[v_solution]["result"] = {
                     "total_of_workers": sum_total_of_workers,
                     "total_days_of_working": sum_total_days_of_working,

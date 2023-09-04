@@ -8,7 +8,7 @@ class RandomSolutions:
     def __init__(self, data: dict):
         self.data = data
 
-    def create_random_solutions(self):
+    def create(self):
         data = self.data
 
         random_solutions = {}

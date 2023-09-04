@@ -1,6 +1,6 @@
 import json
 
-def letter_to_array_index(column_letter):
+def letter_to_array_index(column_letter) -> int:
     """
     to convert the corresponding letter to its order in the alphabet
     and deduct its index with 1 to set the index following array index
