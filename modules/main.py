@@ -1,7 +1,7 @@
 from modules.file import File
 from domain.general import *
 from domain.individual import *
-from domain.genetic_algorithm.random_solutions import *
+from domain.genetic_algorithm.solutions import *
 from domain.genetic_algorithm.fitness_function import *
 import config.constants as constants
 import helpers.general as h_general
@@ -15,13 +15,13 @@ class Main:
         first_individual = Individual.create_first_individual(Main.File)
 
         # create random solutions
-        random_solutions = RandomSolutions(first_individual)
-        first_solution = random_solutions.create()
+        solutions_mod = Solutions(first_individual)
+        first_solution = solutions_mod.create_random_solutions()
 
         # initial solution/recommendation
         solution = first_solution
 
-        # get the initial optimum solution, assuming 1 worker for each task is the best to press the cost
+        # get the initial optimum fitness solution, assuming 1 worker for each task is the best to press the cost
         # regardless the days will be spent
         # ...
 

@@ -4,11 +4,11 @@ import random
 import helpers.general as h_general
 import copy
 
-class RandomSolutions:
+class Solutions:
     def __init__(self, data: dict):
         self.data = data
 
-    def create(self):
+    def create_random_solutions(self):
         data = self.data
 
         random_solutions = {}
