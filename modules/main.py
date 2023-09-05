@@ -21,6 +21,10 @@ class Main:
         # initial solution/recommendation
         solution = first_solution
 
+        # get the initial optimum solution, assuming 1 worker for each task is the best to press the cost
+        # regardless the days will be spent
+        # ...
+
         # GA loop starts (to find the best solution, then stop)
         while True:
             for v_solution in solution:
