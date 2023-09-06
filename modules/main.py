@@ -14,16 +14,17 @@ class Main:
         # the main index of the dictionary will be the excel row number
         first_individual = Individual.create_first_individual(Main.File)
 
+        Solutions_mod = Solutions(first_individual)
+
         # create random solutions
-        solutions_mod = Solutions(first_individual)
-        first_solution = solutions_mod.create_random_solutions()
+        first_solution = Solutions_mod.create_random_solutions()
 
         # initial solution/recommendation
         solution = first_solution
 
         # get the initial optimum fitness solution, assuming 1 worker for each task is the best to press the cost
         # regardless the days will be spent
-        # ...
+        solution_one_worker_only_all_task = Solutions_mod.create_solutions_one_worker_only_all_task()
 
         # GA loop starts (to find the best solution, then stop)
         while True:

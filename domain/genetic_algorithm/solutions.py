@@ -9,6 +9,12 @@ class Solutions:
         self.data = data
 
     def create_random_solutions(self):
+        return self.create_solutions(is_random = True)
+
+    def create_solutions_one_worker_only_all_task(self):
+        return self.create_solutions(is_random = False, total_worker = 1)
+
+    def create_solutions(self, is_random: bool, total_worker: int = 1) -> dict:
         data = self.data
 
         random_solutions = {}
@@ -26,7 +32,11 @@ class Solutions:
                 # TODO: random solution for total of workers per individual (chromosome)
                 # should have more logic here, cannot mere a full random
                 # ...
-                total_of_workers_solution = random.randint(1, 10)
+                if is_random == True:
+                    total_of_workers_solution = random.randint(1, 10)
+                
+                if is_random == False:
+                    total_of_workers_solution = total_worker
                 
                 # recalculate total days to work and total cost
                 total_days_of_working = General.get_total_days_to_work_by_total_workers_compare_to_targeted_units(
