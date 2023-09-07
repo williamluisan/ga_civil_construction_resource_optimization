@@ -35,7 +35,7 @@ class Main:
                 "total_cost_of_workers": sum_total_cost_of_workers,
             }
         assumed_best_solution_total_of_workers = sum_total_of_workers
-        assumed_best_solution_max_total_days_of_working = sum_total_days_of_working
+        assumed_max_total_days_of_working = sum_total_days_of_working
         assumed_best_solution_total_cost_of_workers = sum_total_cost_of_workers
         h_general.json_dumps_pretty_print(solution_one_worker_only_all_task)
         exit()
@@ -43,12 +43,20 @@ class Main:
         # GA loop starts (to find the best solution, then stop)
         while True:
             for v_solution in solution:
+                # fitness function calculation
                 sum_total_of_workers, sum_total_days_of_working, sum_total_cost_of_workers = FitnessFunction.calculate(solution[v_solution])
                 solution[v_solution]["result"] = {
                     "total_of_workers": sum_total_of_workers,
                     "total_days_of_working": sum_total_days_of_working,
                     "total_cost_of_workers": sum_total_cost_of_workers,
                 }
+
+                # efficiency value calculatino
+                efficency_value = FitnessFunction.calculate_efficiency_value(
+                    assumed_best_solution_total_of_workers, assumed_max_total_days_of_working, assumed_best_solution_total_cost_of_workers
+                    , sum_total_of_workers, sum_total_days_of_working, sum_total_cost_of_workers
+                )
+                solution[v_solution]["efficiency_value"] = efficency_value
 
             h_general.json_dumps_pretty_print(solution)
 
