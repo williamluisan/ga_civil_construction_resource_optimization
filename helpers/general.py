@@ -18,4 +18,4 @@ def format_string_float_two_decimal_points(value: float) -> str:
     return format(value, ".2f")
 
 def json_dumps_pretty_print(data: any):
-    print(json.dumps(data, indent = 4))
+    print(json.dumps(data, indent=4))

@@ -37,6 +37,8 @@ class Main:
         assumed_best_solution_total_of_workers = sum_total_of_workers
         assumed_best_solution_max_total_days_of_working = sum_total_days_of_working
         assumed_best_solution_total_cost_of_workers = sum_total_cost_of_workers
+        h_general.json_dumps_pretty_print(solution_one_worker_only_all_task)
+        exit()
 
         # GA loop starts (to find the best solution, then stop)
         while True:

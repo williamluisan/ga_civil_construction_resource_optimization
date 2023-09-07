@@ -9,17 +9,19 @@ class Solutions:
         self.data = data
 
     def create_random_solutions(self):
-        return self.create_solutions(is_random = True)
+        return self.create_solutions(is_random=True)
 
     def create_solutions_one_worker_only_all_task(self):
-        return self.create_solutions(is_random = False, total_worker = 1)
+        return self.create_solutions(is_random=False, total_worker=1, total_solutions=1)
 
-    def create_solutions(self, is_random: bool, total_worker: int = 1) -> dict:
+    def create_solutions(self, is_random: bool, total_worker: int=1, total_solutions=constants.TOTAL_INDIVIDUAL_PER_POPULATION) -> dict:
         data = self.data
 
         random_solutions = {}
 
-        for v in range(constants.TOTAL_INDIVIDUAL_PER_POPULATION):
+        total_solutions_to_generate = total_solutions
+
+        for v in range(total_solutions_to_generate):
             solution_index = v + 1
 
             solution_data = copy.deepcopy(data)
