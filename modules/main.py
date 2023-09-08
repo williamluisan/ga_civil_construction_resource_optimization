@@ -3,6 +3,7 @@ from domain.general import *
 from domain.individual import *
 from domain.genetic_algorithm.solutions import *
 from domain.genetic_algorithm.fitness_function import *
+from domain.genetic_algorithm.selection import *
 import config.constants as constants
 import helpers.general as h_general
 
@@ -37,8 +38,6 @@ class Main:
         assumed_best_solution_total_of_workers = sum_total_of_workers
         assumed_max_total_days_of_working = sum_total_days_of_working
         assumed_best_solution_total_cost_of_workers = sum_total_cost_of_workers
-        h_general.json_dumps_pretty_print(solution_one_worker_only_all_task)
-        exit()
 
         # GA loop starts (to find the best solution, then stop)
         while True:
@@ -51,14 +50,16 @@ class Main:
                     "total_cost_of_workers": sum_total_cost_of_workers,
                 }
 
-                # efficiency value calculatino
+                # efficiency value calculation
                 efficency_value = FitnessFunction.calculate_efficiency_value(
                     assumed_best_solution_total_of_workers, assumed_max_total_days_of_working, assumed_best_solution_total_cost_of_workers
                     , sum_total_of_workers, sum_total_days_of_working, sum_total_cost_of_workers
                 )
                 solution[v_solution]["efficiency_value"] = efficency_value
 
-            h_general.json_dumps_pretty_print(solution)
+            # sort the given solution by efficiency value
+            Selection_mod = Selection(solution)
+            Selection_mod.sort_by_efficiency_value()
 
             return
         
