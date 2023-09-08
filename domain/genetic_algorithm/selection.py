@@ -7,4 +7,4 @@ class Selection:
     def sort_by_efficiency_value(self, sort: str="asc"):
         data = self.data
 
-        print(data.items(), end = '\n\n')
+        print(data.items())
