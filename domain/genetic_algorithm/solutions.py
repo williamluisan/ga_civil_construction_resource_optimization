@@ -17,7 +17,7 @@ class Solutions:
     def create_solutions(self, is_random: bool, total_worker: int=1, total_solutions=constants.TOTAL_INDIVIDUAL_PER_POPULATION) -> dict:
         data = self.data
 
-        random_solutions = {}
+        random_solutions = []
 
         total_solutions_to_generate = total_solutions
 
@@ -52,6 +52,9 @@ class Solutions:
                 solution_data[v_data][constants.R_COLUMN_INDEX_NAME] = total_days_of_working
                 solution_data[v_data][constants.T_COLUMN_INDEX_NAME] = total_cost_by_unit_defined_price_and_total_of_workers
 
-            random_solutions[solution_index] = {"solution": solution_data}
+            random_solutions.append({
+                "counter": solution_index,
+                "solution": solution_data
+            })
 
         return random_solutions
