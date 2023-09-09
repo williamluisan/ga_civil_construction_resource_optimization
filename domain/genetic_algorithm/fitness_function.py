@@ -2,7 +2,7 @@ import helpers.general as h_general
 import config.constants as constants
 
 class FitnessFunction:
-    def calculate(data: dict) -> (int, float, float):
+    def calculate(data: list) -> (int, float, float):
         sum_total_of_workers = sum_total_days_of_working = sum_total_cost_of_workers = 0
 
         solution = data["solution"]

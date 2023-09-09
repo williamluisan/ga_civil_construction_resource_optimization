@@ -8,13 +8,13 @@ class Solutions:
     def __init__(self, data: dict):
         self.data = data
 
-    def create_random_solutions(self):
+    def create_random_solutions(self) -> list:
         return self.create_solutions(is_random=True)
 
-    def create_solutions_one_worker_only_all_task(self):
+    def create_solutions_one_worker_only_all_task(self) -> list:
         return self.create_solutions(is_random=False, total_worker=1, total_solutions=1)
 
-    def create_solutions(self, is_random: bool, total_worker: int=1, total_solutions=constants.TOTAL_INDIVIDUAL_PER_POPULATION) -> dict:
+    def create_solutions(self, is_random: bool, total_worker: int=1, total_solutions=constants.TOTAL_INDIVIDUAL_PER_POPULATION) -> list:
         data = self.data
 
         random_solutions = []
@@ -53,7 +53,7 @@ class Solutions:
                 solution_data[v_data][constants.T_COLUMN_INDEX_NAME] = total_cost_by_unit_defined_price_and_total_of_workers
 
             random_solutions.append({
-                "counter": solution_index,
+                "id": solution_index,
                 "solution": solution_data
             })
 

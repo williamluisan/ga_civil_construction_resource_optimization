@@ -1,5 +1,7 @@
 import json
 
+import tkinter as tk
+
 def letter_to_array_index(column_letter) -> int:
     """
     to convert the corresponding letter to its order in the alphabet

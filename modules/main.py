@@ -14,10 +14,9 @@ class Main:
     def execute():
         # the main index of the dictionary will be the excel row number
         first_individual = Individual.create_first_individual(Main.File)
-
-        Solutions_mod = Solutions(first_individual)
-
+        
         # create random solutions
+        Solutions_mod = Solutions(first_individual)
         first_solution = Solutions_mod.create_random_solutions()
 
         # initial solution/recommendation
@@ -25,26 +24,29 @@ class Main:
 
         # get the initial optimum fitness solution, assuming 1 worker for each task is the best to press the cost
         # regardless the days will be spent
-        solution_one_worker_only_all_task = Solutions_mod.create_solutions_one_worker_only_all_task()
-        for v_solution_one_worker_only_all_task in solution_one_worker_only_all_task:
+        solution_one_worker_only_all_task_create = Solutions_mod.create_solutions_one_worker_only_all_task()
+        solution_one_worker_only_all_task = []
+        for v_solution_one_worker_only_all_task_create in solution_one_worker_only_all_task_create:
             sum_total_of_workers, sum_total_days_of_working, sum_total_cost_of_workers = FitnessFunction.calculate(
-                solution_one_worker_only_all_task[v_solution_one_worker_only_all_task]
+                v_solution_one_worker_only_all_task_create
             )
-            solution_one_worker_only_all_task[v_solution_one_worker_only_all_task]["result"] = {
+            v_solution_one_worker_only_all_task_create["result"] = {
                 "total_of_workers": sum_total_of_workers,
                 "total_days_of_working": sum_total_days_of_working,
                 "total_cost_of_workers": sum_total_cost_of_workers,
             }
+            solution_one_worker_only_all_task.append(v_solution_one_worker_only_all_task_create)
+        
         assumed_best_solution_total_of_workers = sum_total_of_workers
         assumed_max_total_days_of_working = sum_total_days_of_working
         assumed_best_solution_total_cost_of_workers = sum_total_cost_of_workers
 
         # GA loop starts (to find the best solution, then stop)
         while True:
-            for v_solution in solution:
+            for k_solution, v_solution in enumerate(solution):
                 # fitness function calculation
-                sum_total_of_workers, sum_total_days_of_working, sum_total_cost_of_workers = FitnessFunction.calculate(solution[v_solution])
-                solution[v_solution]["result"] = {
+                sum_total_of_workers, sum_total_days_of_working, sum_total_cost_of_workers = FitnessFunction.calculate(v_solution)
+                v_solution["result"] = {
                     "total_of_workers": sum_total_of_workers,
                     "total_days_of_working": sum_total_days_of_working,
                     "total_cost_of_workers": sum_total_cost_of_workers,
@@ -55,11 +57,12 @@ class Main:
                     assumed_best_solution_total_of_workers, assumed_max_total_days_of_working, assumed_best_solution_total_cost_of_workers
                     , sum_total_of_workers, sum_total_days_of_working, sum_total_cost_of_workers
                 )
-                solution[v_solution]["efficiency_value"] = efficency_value
+                v_solution["efficiency_value"] = efficency_value
+                solution[k_solution] = v_solution
 
             # sort the given solution by efficiency value
             Selection_mod = Selection(solution)
-            Selection_mod.sort_by_efficiency_value()
+            return Selection_mod.sort_by_efficiency_value()
 
             return
         

@@ -1,4 +1,6 @@
 import helpers.general as h_general
+import json
+from collections import OrderedDict
 
 class Selection:
     def __init__(self, data: dict):
@@ -6,5 +8,6 @@ class Selection:
 
     def sort_by_efficiency_value(self, sort: str="asc"):
         data = self.data
+        sorted_data = sorted(data, key=lambda x: x['efficiency_value'])
 
-        print(data.items())
+        return sorted_data
