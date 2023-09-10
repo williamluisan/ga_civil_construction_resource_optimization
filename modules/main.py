@@ -63,12 +63,11 @@ class Main:
                 solution[k_solution] = v_solution
 
             Selection_mod = Selection(solution)
-            elitist_solution = Selection_mod.get_elitist_solution()
-            selected_for_crossover_solution = Selection_mod.get_selected_solution_for_crossover()
+            solution_elitist = Selection_mod.get_elitist_solution()
+            solution_selected_for_crossover = Selection_mod.get_selected_solution_for_crossover()
 
             print.append(Selection_mod.sort_by_efficiency_value())
-            print.append(elitist_solution)
-            print.append(selected_for_crossover_solution)
+            print.append(solution_elitist)
+            print.append(solution_selected_for_crossover)
 
             return print
-        
