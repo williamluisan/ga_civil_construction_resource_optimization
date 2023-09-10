@@ -8,8 +8,8 @@ class Solutions:
     def __init__(self, data: dict):
         self.data = data
 
-    def create_random_solutions(self) -> list:
-        return self.create_solutions(is_random=True)
+    def create_random_solutions(self, total_solutions=constants.TOTAL_INDIVIDUAL_PER_POPULATION) -> list:
+        return self.create_solutions(is_random=True, total_solutions=total_solutions)
 
     def create_solutions_one_worker_only_all_task(self) -> list:
         return self.create_solutions(is_random=False, total_worker=1, total_solutions=1)

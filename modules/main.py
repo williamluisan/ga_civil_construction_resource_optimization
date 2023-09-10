@@ -66,8 +66,7 @@ class Main:
             solution_elitist = Selection_mod.get_elitist_solution()
             solution_selected_for_crossover = Selection_mod.get_selected_solution_for_crossover()
 
-            print.append(Selection_mod.sort_by_efficiency_value())
-            print.append(solution_elitist)
-            print.append(solution_selected_for_crossover)
+            # elitist rule for new generation
+            solution = solution_elitist
 
-            return print
+            return solution
