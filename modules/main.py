@@ -42,6 +42,7 @@ class Main:
         assumed_best_solution_total_cost_of_workers = sum_total_cost_of_workers
 
         # GA loop starts (to find the best solution, then stop)
+        count = 0
         while True:
             for k_solution, v_solution in enumerate(solution):
                 # fitness function calculation
@@ -60,9 +61,9 @@ class Main:
                 v_solution["efficiency_value"] = efficency_value
                 solution[k_solution] = v_solution
 
-            # sort the given solution by efficiency value
             Selection_mod = Selection(solution)
-            return Selection_mod.sort_by_efficiency_value()
+            elitist_solution = Selection_mod.get_elitist_solution()
+            return elitist_solution
 
-            return
+            return    
         
