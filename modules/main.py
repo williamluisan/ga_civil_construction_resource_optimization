@@ -43,6 +43,7 @@ class Main:
 
         # GA loop starts (to find the best solution, then stop)
         count = 0
+        print = []
         while True:
             for k_solution, v_solution in enumerate(solution):
                 # fitness function calculation
@@ -63,7 +64,11 @@ class Main:
 
             Selection_mod = Selection(solution)
             elitist_solution = Selection_mod.get_elitist_solution()
-            return elitist_solution
+            selected_for_crossover_solution = Selection_mod.get_selected_solution_for_crossover()
 
-            return    
+            print.append(Selection_mod.sort_by_efficiency_value())
+            print.append(elitist_solution)
+            print.append(selected_for_crossover_solution)
+
+            return print
         
