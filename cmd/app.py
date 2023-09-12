@@ -5,9 +5,16 @@ import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from modules.main import Main
+from modules.pygad import *
 
+## original
+# def main():
+    # Main.execute()
+
+## test PyGad
 def main():
-    Main.execute()
+    pygad_mod = Pygad()
+    pygad_mod.execute()
 
 if __name__ == "__main__":
     main()
