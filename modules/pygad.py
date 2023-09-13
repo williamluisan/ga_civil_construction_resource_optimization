@@ -58,3 +58,5 @@ class Pygad:
 
         prediction = numpy.sum(numpy.array(function_inputs)*solution)
         print("Predicted output based on the best solution : {prediction}".format(prediction=prediction))
+
+        return "pygad"
