@@ -11,4 +11,4 @@ def execute():
 
 @app.get("/pygad")
 def execute_pygad():
-    return Pygad.execute();
+    return Main.execute_pygad();
