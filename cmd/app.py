@@ -6,7 +6,6 @@ import textwrap
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from modules.main import Main
-from modules.pygad import Pygad
 
 def main():
     argv = sys.argv
@@ -23,7 +22,7 @@ def main():
 
     if argv_passed == True:
         if argv_second == 'pygad':
-            Pygad.execute()
+            Main.execute_pygad()
         else:
             Main.execute()
 

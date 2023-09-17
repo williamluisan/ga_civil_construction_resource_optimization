@@ -5,6 +5,7 @@ from domain.genetic_algorithm.solutions import *
 from domain.genetic_algorithm.fitness_function import *
 from domain.genetic_algorithm.selection import *
 import config.constants as constants
+from modules.pygad import Pygad
 import helpers.general as h_general
 
 class Main:
@@ -70,3 +71,6 @@ class Main:
             solution = solution_elitist
 
             return solution
+        
+    def execute_pygad():
+        Pygad.execute()
