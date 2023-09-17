@@ -5,7 +5,6 @@ from domain.genetic_algorithm.solutions import *
 from domain.genetic_algorithm.fitness_function import *
 from domain.genetic_algorithm.selection import *
 import config.constants as constants
-from modules.pygad import Pygad
 import helpers.general as h_general
 
 class Main:
@@ -73,4 +72,14 @@ class Main:
             return solution
         
     def execute_pygad():
-        Pygad.execute()
+        # the main index of the dictionary will be the excel row number
+        first_individual = Individual.create_first_individual(Main.File)
+        
+        # create random solutions
+        Solutions_mod = Solutions(first_individual)
+        first_solution = Solutions_mod.create_random_solutions()
+
+        # initial solution/recommendation
+        solution = first_solution
+        
+        return solution

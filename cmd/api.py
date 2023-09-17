@@ -1,7 +1,6 @@
 from fastapi import FastAPI
 
 from modules.main import Main
-from modules.pygad import Pygad
 
 app = FastAPI()
 
