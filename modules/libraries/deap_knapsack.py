@@ -73,6 +73,6 @@ class Deap:
         algorithms.eaMuPlusLambda(pop, toolbox, MU, LAMBDA, CXPB, MUTPB, NGEN, stats, halloffame=hof)
 
         # print(pop, stats, hof)
-        # print(pop)
+        print(pop)
         # print(stats)
-        print(hof)
+        # print(hof)
