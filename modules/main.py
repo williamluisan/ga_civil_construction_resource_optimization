@@ -4,7 +4,9 @@ from domain.individual import *
 from domain.genetic_algorithm.solutions import *
 from domain.genetic_algorithm.fitness_function import *
 from domain.genetic_algorithm.selection import *
-from modules.pygad_multi_objective import Pygad
+from modules.libraries.pygad_multi_objective import Pygad
+from modules.libraries.pygad_multi_objective import Pygad
+from modules.libraries.deap import Deap
 import config.constants as constants
 import helpers.general as h_general
 
@@ -74,3 +76,6 @@ class Main:
         
     def execute_pygad():
         Pygad.execute()
+
+    def execute_deap():
+        return Deap.execute()
