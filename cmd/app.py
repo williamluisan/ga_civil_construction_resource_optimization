@@ -15,7 +15,7 @@ def main():
     if len(argv) == 1 or len(argv) == 2:
         argv_passed = True
         if len(argv) == 2:
-            if argv[1] == 'pygad':
+            if argv[1] == 'pygad' or argv[1] == 'deap':
                 argv_second = argv[1]
             else:
                 argv_passed = False
@@ -23,6 +23,8 @@ def main():
     if argv_passed == True:
         if argv_second == 'pygad':
             Main.execute_pygad()
+        elif argv_second == 'deap':
+            Main.execute_deap()
         else:
             Main.execute()
 
