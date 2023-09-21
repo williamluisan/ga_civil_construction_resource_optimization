@@ -5,9 +5,9 @@ from domain.genetic_algorithm.solutions import *
 from domain.genetic_algorithm.fitness_function import *
 from domain.genetic_algorithm.selection import *
 # from modules.libraries.pygad_multi_objective import Pygad
-from modules.libraries.pygad_ai_generated import Pygad
+from modules.libraries_example.pygad_ai_generated import Pygad
 # from modules.libraries.deap_knapsack import Deap
-from modules.libraries.deap_ai_generated import Deap
+from modules.libraries_example.deap_ai_generated import Deap
 import config.constants as constants
 import helpers.general as h_general
 
