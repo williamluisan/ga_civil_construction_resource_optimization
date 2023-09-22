@@ -5,6 +5,14 @@ class Selection:
     def __init__(self, data: dict):
         self.data = data
 
+    def run(self) -> (dict, dict):
+        """
+        Returns:
+            dict: dictionary of elitist solution
+            dict: dictionary of selected solution for crossover
+        """
+        return self.get_elitist_solution(), self.get_selected_solution_for_crossover()
+
     def get_total_elitist_solution_inside_list_to_take(self) -> int:
         percentage = constants.ELITIST_SOLUTION_PERCENTAGE_TO_TAKE
         total_solution_per_population = constants.TOTAL_INDIVIDUAL_PER_POPULATION

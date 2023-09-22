@@ -69,10 +69,9 @@ class Main:
 
             ## selection
             Selection_mod = Selection(solution)
-            solution_elitist = Selection_mod.get_elitist_solution()
-            solution_selected_for_crossover = Selection_mod.get_selected_solution_for_crossover()
+            solution_elitist, solution_selected_for_crossover = Selection_mod.run()
 
-            # elitist rule for new generation
+            # initiate new solution
             solution = solution_elitist
             ## //
 
