@@ -4,6 +4,7 @@ from domain.individual import *
 from domain.genetic_algorithm.solutions import *
 from domain.genetic_algorithm.fitness_function import *
 from domain.genetic_algorithm.selection import *
+from domain.genetic_algorithm.crossover import *
 # from modules.libraries.pygad_multi_objective import Pygad
 from modules.libraries_example.pygad_ai_generated import Pygad
 # from modules.libraries.deap_knapsack import Deap
@@ -73,11 +74,14 @@ class Main:
 
             # elitist rule for new generation
             solution = solution_elitist
+            ## //
 
-            solution_list_of_total_of_workers = Selection_mod.convert_selected_solution_to_list_of_total_of_workers()
-            ## // selection
+            ## crossover
+            Crossover_mod = Crossover(solution_selected_for_crossover)
+            crossover_result = Crossover_mod.run()
+            ## //
 
-            return solution_list_of_total_of_workers
+            return crossover_result
         
     def execute_pygad():
         return Pygad.execute()

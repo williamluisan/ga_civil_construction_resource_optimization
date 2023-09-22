@@ -12,7 +12,6 @@ class Selection:
         total = (percentage / 100) * total_solution_per_population
 
         return math.ceil(total)
-        
 
     def sort_by_efficiency_value(self, sort: str="asc") -> list:
         data = self.data
@@ -35,16 +34,3 @@ class Selection:
         total_to_take = self.get_total_elitist_solution_inside_list_to_take()
 
         return solution[total_to_take:]
-    
-    def convert_selected_solution_to_list_of_total_of_workers(self) -> list:
-        selected_solution = self.get_selected_solution_for_crossover()
-
-        solution_list_of_total_of_workers = []
-        all_solution_list_of_total_of_workers = []
-        for i in selected_solution:
-            for y in i['solution']:
-                total_of_workers = i['solution'][y][constants.Q_COLUMN_INDEX_NAME]
-                solution_list_of_total_of_workers.append(total_of_workers)
-            all_solution_list_of_total_of_workers.append(solution_list_of_total_of_workers)
-
-        return all_solution_list_of_total_of_workers
