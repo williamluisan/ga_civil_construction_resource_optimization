@@ -66,6 +66,7 @@ class Main:
                 v_solution["efficiency_value"] = efficency_value
                 solution[k_solution] = v_solution
 
+            ## selection
             Selection_mod = Selection(solution)
             solution_elitist = Selection_mod.get_elitist_solution()
             solution_selected_for_crossover = Selection_mod.get_selected_solution_for_crossover()
@@ -73,7 +74,10 @@ class Main:
             # elitist rule for new generation
             solution = solution_elitist
 
-            return solution
+            solution_list_of_total_of_workers = Selection_mod.convert_selected_solution_to_list_of_total_of_workers()
+            ## // selection
+
+            return solution_list_of_total_of_workers
         
     def execute_pygad():
         return Pygad.execute()
