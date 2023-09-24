@@ -26,7 +26,7 @@ class Main:
 
         # initial solution/recommendation
         solution = first_solution
-
+        
         # get the initial optimum fitness solution, assuming 1 worker for each task is the best to press the cost
         # regardless the days will be spent
         solution_one_worker_only_all_task_create = Solutions_mod.create_solutions_one_worker_only_all_task()
@@ -47,8 +47,6 @@ class Main:
         assumed_best_solution_total_cost_of_workers = sum_total_cost_of_workers
 
         # GA loop starts (to find the best solution, then stop)
-        count = 0
-        print = []
         while True:
             for k_solution, v_solution in enumerate(solution):
                 # fitness function calculation

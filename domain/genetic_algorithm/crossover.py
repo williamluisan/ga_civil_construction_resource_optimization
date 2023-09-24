@@ -7,12 +7,21 @@ class Crossover:
     def run(self) -> list:
         selected_solution_list = self.convert_selected_solution_to_list_of_total_of_workers()
         total_count_selected_solution_list = selected_solution_list.count(selected_solution_list)
-        
+        half_length_of_solution = len(selected_solution_list[0]) // 2
+
         crossover_solution = []
-        for i in selected_solution_list:
+        for k, v_solution in enumerate(selected_solution_list):
+            if k % 2 != 0:
+                solution_parent_a = selected_solution_list[k]
+                solution_parent_b = selected_solution_list[k + 1] 
+                
+                offspring_one = solution_parent_a[:half_length_of_solution] + solution_parent_b[half_length_of_solution:]
+                offspring_two = solution_parent_a[half_length_of_solution:] + solution_parent_b[:half_length_of_solution]
+                
+                crossover_solution.append(offspring_one)
+                crossover_solution.append(offspring_two)
 
-
-        return selected_solution_list
+        return selected_solution_list, crossover_solution
 
     def convert_selected_solution_to_list_of_total_of_workers(self) -> list:
         selected_solution = self.data 
