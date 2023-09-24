@@ -1,15 +1,17 @@
 import config.constants as constants
 
 class Crossover:
-    def __init__(self, data: dict, solution_elitist: dict):
+    def __init__(self, data: dict, solution_data_structure_sample: dict):
         """
         Args:
             data (dict)
-            solution_elitsist (dict): this variable purpose is to get known the desired final data structure to built
+            solution_data_structure_sample (dict): this variable purpose is to get known the desired final data structure to built
         """
         self.data = data
+        self.solution_data_structure_sample = solution_data_structure_sample
 
     def run(self) -> list:
+        solution_data_structure_sample = self.solution_data_structure_sample
         selected_solution_list = self.convert_selected_solution_to_list_of_total_of_workers()
         total_count_selected_solution_list = len(selected_solution_list)
         half_length_of_solution = len(selected_solution_list[0]) // 2
@@ -46,7 +48,10 @@ class Crossover:
                         crossover_solution.append(offspring_one)
 
         # set up the crossover solution to the main data structure
-        # ...
+        crossover_solution_strucutred = {}
+        for v_crossover_solution in crossover_solution:
+            # ...
+            return solution_data_structure_sample
 
         return crossover_solution
 

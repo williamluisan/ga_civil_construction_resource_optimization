@@ -26,6 +26,7 @@ class Main:
 
         # initial solution/recommendation
         solution = first_solution
+        solution_data_structure_sample = solution[0] # the solution data structure sample is cloned from the very first random solution generated
         
         # get the initial optimum fitness solution, assuming 1 worker for each task is the best to press the cost
         # regardless the days will be spent
@@ -74,7 +75,7 @@ class Main:
             ## //
 
             ## crossover
-            Crossover_mod = Crossover(solution_selected_for_crossover, solution_elitist)
+            Crossover_mod = Crossover(solution_selected_for_crossover, solution_data_structure_sample)
             crossover_result = Crossover_mod.run()
             ## //
 
