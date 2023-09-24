@@ -74,11 +74,11 @@ class Main:
             ## //
 
             ## crossover
-            Crossover_mod = Crossover(solution_selected_for_crossover)
+            Crossover_mod = Crossover(solution_selected_for_crossover, solution_elitist)
             crossover_result = Crossover_mod.run()
             ## //
 
-            return crossover_result
+            return solution_elitist, crossover_result
         
     def execute_pygad():
         return Pygad.execute()

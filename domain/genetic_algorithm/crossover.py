@@ -1,7 +1,12 @@
 import config.constants as constants
 
 class Crossover:
-    def __init__(self, data: dict):
+    def __init__(self, data: dict, solution_elitist: dict):
+        """
+        Args:
+            data (dict)
+            solution_elitsist (dict): this variable purpose is to get known the desired final data structure to built
+        """
         self.data = data
 
     def run(self) -> list:
@@ -29,7 +34,7 @@ class Crossover:
 
             if solution_parent_a and solution_parent_b:
                 offspring_one = solution_parent_a[:half_length_of_solution] + solution_parent_b[half_length_of_solution:]
-                offspring_two = solution_parent_a[half_length_of_solution:] + solution_parent_b[:half_length_of_solution]
+                offspring_two = solution_parent_b[:half_length_of_solution] + solution_parent_a[half_length_of_solution:]
             
             if offspring_one and offspring_two:
                 if have_last_individual_dont_have_mate == False:
@@ -39,8 +44,11 @@ class Crossover:
                     if len(crossover_solution) != total_count_selected_solution_list:
                         # take the first offspring of matching the single last individual
                         crossover_solution.append(offspring_one)
-                
-        return selected_solution_list, crossover_solution
+
+        # set up the crossover solution to the main data structure
+        # ...
+
+        return crossover_solution
 
     def convert_selected_solution_to_list_of_total_of_workers(self) -> list:
         selected_solution = self.data 
