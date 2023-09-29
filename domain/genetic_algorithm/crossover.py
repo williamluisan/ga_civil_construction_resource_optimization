@@ -1,4 +1,5 @@
 import config.constants as constants
+import copy
 
 class Crossover:
     def __init__(self, data: dict, solution_data_structure_sample: dict):
@@ -48,12 +49,16 @@ class Crossover:
                         crossover_solution.append(offspring_one)
 
         # set up the crossover solution to the main data structure
-        crossover_solution_strucutred = {}
+        crossover_solution_structured = []
+        temp_crossover_solution_structured = {}
         for v_crossover_solution in crossover_solution:
-            # ...
-            return solution_data_structure_sample
-
-        return crossover_solution
+            temp_crossover_solution_structured = copy.deepcopy(solution_data_structure_sample)
+            for k, v in enumerate(temp_crossover_solution_structured['solution']):
+                temp_crossover_solution_structured['solution'][v][constants.Q_COLUMN_INDEX_NAME] = v_crossover_solution[k]
+            
+            crossover_solution_structured.append(temp_crossover_solution_structured)
+            
+        return crossover_solution_structured
 
     def convert_selected_solution_to_list_of_total_of_workers(self) -> list:
         selected_solution = self.data 
