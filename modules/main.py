@@ -1,5 +1,6 @@
 from modules.file import File
 from domain.general import *
+from domain.population import *
 from domain.individual import *
 from domain.genetic_algorithm.solutions import *
 from domain.genetic_algorithm.fitness_function import *
@@ -31,6 +32,7 @@ class Main:
         # get the initial optimum fitness solution, assuming 1 worker for each task is the best to press the cost
         # regardless the days will be spent
         solution_one_worker_only_all_task_create = Solutions_mod.create_solutions_one_worker_only_all_task()
+
         solution_one_worker_only_all_task = []
         for v_solution_one_worker_only_all_task_create in solution_one_worker_only_all_task_create:
             sum_total_of_workers, sum_total_days_of_working, sum_total_cost_of_workers = FitnessFunction.calculate(
