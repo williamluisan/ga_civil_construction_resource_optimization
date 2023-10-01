@@ -1,4 +1,5 @@
 from domain.general import *
+from domain.genetic_algorithm.fitness_function import *
 import config.constants as constants
 import random
 
@@ -33,3 +34,25 @@ class Population:
             population_recalculated.append(solution_data)
         
         return population_recalculated
+    
+    def calculate_fitness_result_and_efficiency_value(self) -> list:
+        # calculate values for invidiual fitness first
+        population = self.calculate_values_for_individual_fitness()
+
+        population_with_result = []
+        data = {}
+        
+        for v_solution in population:
+            data['solution'] = v_solution
+            sum_total_of_workers, sum_total_days_of_working, sum_total_cost_of_workers = FitnessFunction.calculate(
+                data
+            )
+            v_solution["result"] = {
+                "total_of_workers": sum_total_of_workers,
+                "total_days_of_working": sum_total_days_of_working,
+                "total_cost_of_workers": sum_total_cost_of_workers,
+            }
+        
+            population_with_result.append(v_solution)
+
+        return population_with_result

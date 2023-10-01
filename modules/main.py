@@ -26,7 +26,6 @@ class Main:
         first_solution = Solutions_mod.create_random_solutions()
         Population_mod = Population(first_solution)
         first_solution = Population_mod.calculate_values_for_individual_fitness()
-        return first_solution
     
         # initial solution/recommendation
         solution = first_solution
@@ -35,22 +34,12 @@ class Main:
         # get the initial optimum fitness solution, assuming 1 worker for each task is the best to press the cost
         # regardless the days will be spent
         solution_one_worker_only_all_task_create = Solutions_mod.create_solutions_one_worker_only_all_task()
-
-        solution_one_worker_only_all_task = []
-        for v_solution_one_worker_only_all_task_create in solution_one_worker_only_all_task_create:
-            sum_total_of_workers, sum_total_days_of_working, sum_total_cost_of_workers = FitnessFunction.calculate(
-                v_solution_one_worker_only_all_task_create
-            )
-            v_solution_one_worker_only_all_task_create["result"] = {
-                "total_of_workers": sum_total_of_workers,
-                "total_days_of_working": sum_total_days_of_working,
-                "total_cost_of_workers": sum_total_cost_of_workers,
-            }
-            solution_one_worker_only_all_task.append(v_solution_one_worker_only_all_task_create)
-        
-        assumed_best_solution_total_of_workers = sum_total_of_workers
-        assumed_max_total_days_of_working = sum_total_days_of_working
-        assumed_best_solution_total_cost_of_workers = sum_total_cost_of_workers
+        Population_mod = Population(solution_one_worker_only_all_task_create)
+        solution_one_worker_only_all_task = Population_mod.calculate_fitness_result_and_efficiency_value()[0]
+        assumed_best_solution_total_of_workers = solution_one_worker_only_all_task['result']['total_of_workers']
+        assumed_max_total_days_of_working = solution_one_worker_only_all_task['result']['total_days_of_working']
+        assumed_best_solution_total_cost_of_workers = solution_one_worker_only_all_task['result']['total_cost_of_workers']
+        return assumed_best_solution_total_cost_of_workers, assumed_max_total_days_of_working, assumed_best_solution_total_cost_of_workers
 
         # GA loop starts (to find the best solution, then stop)
         counter = 0

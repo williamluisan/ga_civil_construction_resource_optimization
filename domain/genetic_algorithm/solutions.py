@@ -16,9 +16,7 @@ class Solutions:
 
     def create_solutions(self, is_random: bool, total_worker: int=1, total_solutions=constants.TOTAL_INDIVIDUAL_PER_POPULATION) -> list:
         data = self.data
-
         random_solutions = []
-
         total_solutions_to_generate = total_solutions
 
         for v in range(total_solutions_to_generate):
