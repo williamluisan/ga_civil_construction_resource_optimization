@@ -18,7 +18,7 @@ class Individual:
             if K_val_value is not None:
                 K_val = K_val_value.strip()
 
-            # create initial population and it's initial calculation
+            # create initial individual and it's initial calculation
             # (data crawled from rows that met certain condition) 
             if J_val == "OH" and K_val == "Pekerja":
                 capability_of_one_day_work_per_one_worker, P_val = General.get_capability_of_one_worker_to_complete_in_one_day_compare_to_targeted_unit(

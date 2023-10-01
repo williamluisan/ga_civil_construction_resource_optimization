@@ -20,11 +20,14 @@ class Main:
     def execute():
         # the main index of the dictionary will be the excel row number
         first_individual = Individual.create_first_individual(Main.File)
-        
+
         # create random solutions
         Solutions_mod = Solutions(first_individual)
         first_solution = Solutions_mod.create_random_solutions()
-
+        Population_mod = Population(first_solution)
+        first_solution = Population_mod.calculate_values_for_individual_fitness()
+        return first_solution
+    
         # initial solution/recommendation
         solution = first_solution
         solution_data_structure_sample = solution[0] # the solution data structure sample is cloned from the very first random solution generated
@@ -50,6 +53,7 @@ class Main:
         assumed_best_solution_total_cost_of_workers = sum_total_cost_of_workers
 
         # GA loop starts (to find the best solution, then stop)
+        counter = 0
         while True:
             for k_solution, v_solution in enumerate(solution):
                 # fitness function calculation
@@ -67,6 +71,9 @@ class Main:
                 )
                 v_solution["efficiency_value"] = efficency_value
                 solution[k_solution] = v_solution
+            
+            if counter == 1:
+                return solution
 
             ## selection
             Selection_mod = Selection(solution)
@@ -79,9 +86,13 @@ class Main:
             ## crossover
             Crossover_mod = Crossover(solution_selected_for_crossover, solution_data_structure_sample)
             crossover_result = Crossover_mod.run()
+
+            # merge elitist solution and crossover result
+            solution = solution + crossover_result
             ## //
 
-            return crossover_result
+            counter += 1
+
         
     def execute_pygad():
         return Pygad.execute()
