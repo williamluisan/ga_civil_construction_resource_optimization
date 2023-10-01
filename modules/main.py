@@ -26,7 +26,7 @@ class Main:
         first_solution = Solutions_mod.create_random_solutions()
         Population_mod = Population(first_solution)
         first_solution = Population_mod.calculate_values_for_individual_fitness()
-    
+
         # initial solution/recommendation
         solution = first_solution
         solution_data_structure_sample = solution[0] # the solution data structure sample is cloned from the very first random solution generated
@@ -39,35 +39,26 @@ class Main:
         assumed_best_solution_total_of_workers = solution_one_worker_only_all_task['result']['total_of_workers']
         assumed_max_total_days_of_working = solution_one_worker_only_all_task['result']['total_days_of_working']
         assumed_best_solution_total_cost_of_workers = solution_one_worker_only_all_task['result']['total_cost_of_workers']
-        return assumed_best_solution_total_cost_of_workers, assumed_max_total_days_of_working, assumed_best_solution_total_cost_of_workers
 
         # GA loop starts (to find the best solution, then stop)
         counter = 0
         while True:
-            for k_solution, v_solution in enumerate(solution):
-                # fitness function calculation
-                sum_total_of_workers, sum_total_days_of_working, sum_total_cost_of_workers = FitnessFunction.calculate(v_solution)
-                v_solution["result"] = {
-                    "total_of_workers": sum_total_of_workers,
-                    "total_days_of_working": sum_total_days_of_working,
-                    "total_cost_of_workers": sum_total_cost_of_workers,
-                }
+            ## fitness
+            Population_mod = Population(solution)
+            solution = Population_mod.calculate_fitness_result_and_efficiency_value(
+                assumed_best_solution_total_of_workers = assumed_best_solution_total_of_workers
+                , assumed_max_total_days_of_working = assumed_max_total_days_of_working
+                , assumed_best_solution_total_cost_of_workers = assumed_best_solution_total_cost_of_workers
+            )
 
-                # efficiency value calculation
-                efficency_value = FitnessFunction.calculate_efficiency_value(
-                    assumed_best_solution_total_of_workers, assumed_max_total_days_of_working, assumed_best_solution_total_cost_of_workers
-                    , sum_total_of_workers, sum_total_days_of_working, sum_total_cost_of_workers
-                )
-                v_solution["efficiency_value"] = efficency_value
-                solution[k_solution] = v_solution
-            
-            if counter == 1:
-                return solution
+            ## termination process
+            ## ...
+            ## //
 
             ## selection
             Selection_mod = Selection(solution)
             solution_elitist, solution_selected_for_crossover = Selection_mod.run()
-
+            
             # initiate new solution
             solution = solution_elitist
             ## //
@@ -80,8 +71,12 @@ class Main:
             solution = solution + crossover_result
             ## //
 
-            counter += 1
+            ## mutation
+            ## ...
+            ## //
 
+            return solution
+            counter += 1
         
     def execute_pygad():
         return Pygad.execute()
