@@ -6,6 +6,7 @@ from domain.genetic_algorithm.solutions import *
 from domain.genetic_algorithm.fitness_function import *
 from domain.genetic_algorithm.selection import *
 from domain.genetic_algorithm.crossover import *
+from domain.genetic_algorithm.mutation import *
 # from modules.libraries.pygad_multi_objective import Pygad
 from modules.libraries_example.pygad_ai_generated import Pygad
 # from modules.libraries.deap_knapsack import Deap
@@ -72,7 +73,8 @@ class Main:
             ## //
 
             ## mutation
-            ## ...
+            Mutation_mod = Mutation(solution)
+            return Mutation_mod.run()
             ## //
 
             return solution

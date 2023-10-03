@@ -1,7 +1,6 @@
 from domain.general import *
 from domain.population import *
 import config.constants as constants
-import helpers.general as h_general
 import copy
 
 class Solutions:

@@ -1,6 +1,5 @@
 import json
-
-import tkinter as tk
+import numpy as np
 
 def letter_to_array_index(column_letter) -> int:
     """
@@ -21,3 +20,9 @@ def format_string_float_two_decimal_points(value: float) -> str:
 
 def json_dumps_pretty_print(data: any):
     print(json.dumps(data, indent=4))
+
+def get_random_int_range_exclude_list_value(start, stop, exclude_list):
+    while True:
+        random_num = np.random.randint(start, stop)
+        if random_num not in exclude_list:
+            return random_num
