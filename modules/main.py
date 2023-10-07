@@ -43,6 +43,7 @@ class Main:
 
         # GA loop starts (to find the best solution, then stop)
         counter = 0
+        increment_id = []
         while True:
             ## fitness
             Population_mod = Population(solution)
@@ -51,11 +52,13 @@ class Main:
                 , assumed_max_total_days_of_working = assumed_max_total_days_of_working
                 , assumed_best_solution_total_cost_of_workers = assumed_best_solution_total_cost_of_workers
             )
+            last_individual_increment_id = solution[-1]['id']
+            increment_id.append(last_individual_increment_id)
 
             ## termination process
             ## ...
             ## //
-
+            
             ## selection
             Selection_mod = Selection(solution)
             solution_elitist, solution_selected_for_crossover = Selection_mod.run()
@@ -63,9 +66,9 @@ class Main:
             # initiate new solution
             solution = solution_elitist
             ## //
-
+            
             ## crossover
-            Crossover_mod = Crossover(solution_selected_for_crossover, solution_data_structure_sample)
+            Crossover_mod = Crossover(solution_selected_for_crossover, solution_data_structure_sample, last_individual_increment_id)
             crossover_result = Crossover_mod.run()
 
             # merge elitist solution and crossover result
@@ -74,11 +77,13 @@ class Main:
 
             ## mutation
             Mutation_mod = Mutation(solution)
-            return Mutation_mod.run()
+            Mutation_mod.run()
             ## //
 
-            return solution
             counter += 1
+
+            if counter == 6:
+                return increment_id
         
     def execute_pygad():
         return Pygad.execute()

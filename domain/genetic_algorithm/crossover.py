@@ -2,7 +2,7 @@ import config.constants as constants
 import copy
 
 class Crossover:
-    def __init__(self, data: dict, solution_data_structure_sample: dict):
+    def __init__(self, data: dict, solution_data_structure_sample: dict, last_individual_increment_id: int = 0):
         """
         Args:
             data (dict)
@@ -10,8 +10,11 @@ class Crossover:
         """
         self.data = data
         self.solution_data_structure_sample = solution_data_structure_sample
+        self.last_individual_increment_id = last_individual_increment_id
 
     def run(self) -> list:
+        last_individual_increment_id = self.last_individual_increment_id
+
         solution_data_structure_sample = self.solution_data_structure_sample
         selected_solution_list = self.convert_selected_solution_to_list_of_total_of_workers()
         total_count_selected_solution_list = len(selected_solution_list)
@@ -52,7 +55,9 @@ class Crossover:
         crossover_solution_structured = []
         temp_crossover_solution_structured = {}
         for v_crossover_solution in crossover_solution:
+            last_individual_increment_id += 1
             temp_crossover_solution_structured = copy.deepcopy(solution_data_structure_sample)
+            temp_crossover_solution_structured['id'] = last_individual_increment_id
             for k, v in enumerate(temp_crossover_solution_structured['solution']):
                 temp_crossover_solution_structured['solution'][v][constants.Q_COLUMN_INDEX_NAME] = v_crossover_solution[k]
             
