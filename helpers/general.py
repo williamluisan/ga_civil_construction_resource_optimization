@@ -26,3 +26,9 @@ def get_random_int_range_exclude_list_value(start, stop, exclude_list):
         random_num = np.random.randint(start, stop)
         if random_num not in exclude_list:
             return random_num
+        
+def is_nested_dict(dictionary):
+    for value in dictionary.values():
+        if isinstance(value, dict):
+            return True
+    return False

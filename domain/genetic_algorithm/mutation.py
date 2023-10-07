@@ -1,3 +1,4 @@
+from domain.genetic_algorithm.solutions import *
 import config.constants as constants
 import helpers.general as h_general
 import numpy as np
@@ -23,8 +24,14 @@ class Mutation:
                 solution_key_index_to_mutate.append(random_key_index)
 
             for j in solution_key_index_to_mutate:
+                # solution_to_mutate = solutions[k_solutions]['solution'][solution_keys_list[j]]
+                solution_to_mutate = solutions[k_solutions]['solution'][solution_keys_list[j]]
+                Solutions_mod = Solutions(solution_to_mutate)
+                a, b, randomized_total_of_workers = Solutions_mod.random_total_of_worker()
+                return a, b, randomized_total_of_workers
+
                 # mutation process starts here
-                solutions[k_solutions]['solution'][solution_keys_list[j]][constants.Q_COLUMN_INDEX_NAME] = 'bbbbb'
+                # solutions[k_solutions]['solution'][solution_keys_list[j]][constants.Q_COLUMN_INDEX_NAME] = 'bbbbb'
         
         return solutions
 
