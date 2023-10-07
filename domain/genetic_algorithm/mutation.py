@@ -25,7 +25,6 @@ class Mutation:
                 solution_key_index_to_mutate.append(random_key_index)
 
             for j in solution_key_index_to_mutate:
-                # solution_to_mutate = solutions[k_solutions]['solution'][solution_keys_list[j]]
                 solution_to_mutate = solutions[k_solutions]['solution'][solution_keys_list[j]]
                 randomized_total_of_workers = General.random_total_of_worker(solution_to_mutate)
 

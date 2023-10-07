@@ -54,9 +54,6 @@ class Main:
             )
             last_individual_increment_id = solution[-1]['id']
             increment_id.append(last_individual_increment_id)
-
-            ## termination process
-            ## ...
             ## //
             
             ## selection
@@ -65,6 +62,11 @@ class Main:
             
             # initiate new solution
             solution = solution_elitist
+            ## //
+
+            ## TODO: termination process
+            if counter == 5:
+                return solution
             ## //
             
             ## crossover
@@ -77,13 +79,10 @@ class Main:
 
             ## mutation
             Mutation_mod = Mutation(solution)
-            Mutation_mod.run()
+            solution = Mutation_mod.run()
             ## //
 
             counter += 1
-
-            if counter == 6:
-                return increment_id
         
     def execute_pygad():
         return Pygad.execute()
