@@ -1,10 +1,7 @@
 from domain.general import *
 from domain.population import *
-import helpers.general as h_general
 import config.constants as constants
 import copy
-import math
-import numpy as np
 
 class Solutions:
     def __init__(self, data: dict):
@@ -27,11 +24,10 @@ class Solutions:
             solution_data = copy.deepcopy(data)
             
             for v_data in solution_data:
-                # TODO: random solution for total of workers per individual (chromosome)
-                # should have more logic here, cannot mere a full random
-                # ...
                 if is_random == True:
-                    total_of_workers_solution = random.randint(1, 10)
+                    solution_to_mutate = solution_data[v_data]
+                    randomized_total_of_workers = General.random_total_of_worker(solution_to_mutate)
+                    total_of_workers_solution = randomized_total_of_workers
                 if is_random == False:
                     total_of_workers_solution = total_worker
 
@@ -43,30 +39,3 @@ class Solutions:
             })
 
         return random_solutions
-    
-    def random_total_of_worker(self):
-        """
-        To pass only the individual/solution dicrionaries to the class constructor.
-        This function is expect not a nested dictionary.
-        """
-        if h_general.is_nested_dict(self.data):
-            print("Unable to randomize the total of workers using the provided dictionary.")
-            exit()
-
-        data = self.data
-
-        min_total_worker_to_random = max_total_worker_to_random = 1
-
-        max_total_worker = data[constants.E_COLUMN_INDEX_NAME] / data[constants.O_COLUMN_INDEX_NAME]
-        if max_total_worker >= 1:
-            max_total_worker_to_random = math.floor(max_total_worker)
-
-        if max_total_worker < 1:
-            max_total_worker_to_random = math.ceil(max_total_worker)
-    
-        if max_total_worker_to_random == min_total_worker_to_random:
-            return 1
-        
-        randomized_total_of_worker = np.random.randint(min_total_worker_to_random, max_total_worker_to_random)
-
-        return randomized_total_of_worker

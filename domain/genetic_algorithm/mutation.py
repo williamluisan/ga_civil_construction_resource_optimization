@@ -1,4 +1,5 @@
 from domain.genetic_algorithm.solutions import *
+from domain.general import *
 import config.constants as constants
 import helpers.general as h_general
 import numpy as np
@@ -26,9 +27,8 @@ class Mutation:
             for j in solution_key_index_to_mutate:
                 # solution_to_mutate = solutions[k_solutions]['solution'][solution_keys_list[j]]
                 solution_to_mutate = solutions[k_solutions]['solution'][solution_keys_list[j]]
-                Solutions_mod = Solutions(solution_to_mutate)
-                randomized_total_of_workers = Solutions_mod.random_total_of_worker()
-                
+                randomized_total_of_workers = General.random_total_of_worker(solution_to_mutate)
+
                 # mutation process starts here
                 solutions[k_solutions]['solution'][solution_keys_list[j]][constants.Q_COLUMN_INDEX_NAME] = randomized_total_of_workers
         
