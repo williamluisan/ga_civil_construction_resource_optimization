@@ -4,6 +4,7 @@ import helpers.general as h_general
 import config.constants as constants
 import copy
 import math
+import numpy as np
 
 class Solutions:
     def __init__(self, data: dict):
@@ -54,13 +55,18 @@ class Solutions:
 
         data = self.data
 
+        min_total_worker_to_random = max_total_worker_to_random = 1
+
         max_total_worker = data[constants.E_COLUMN_INDEX_NAME] / data[constants.O_COLUMN_INDEX_NAME]
         if max_total_worker >= 1:
             max_total_worker_to_random = math.floor(max_total_worker)
 
         if max_total_worker < 1:
             max_total_worker_to_random = math.ceil(max_total_worker)
-
-        return data, max_total_worker, max_total_worker_to_random
     
-        return self.data
+        if max_total_worker_to_random == min_total_worker_to_random:
+            return 1
+        
+        randomized_total_of_worker = np.random.randint(min_total_worker_to_random, max_total_worker_to_random)
+
+        return randomized_total_of_worker

@@ -27,11 +27,10 @@ class Mutation:
                 # solution_to_mutate = solutions[k_solutions]['solution'][solution_keys_list[j]]
                 solution_to_mutate = solutions[k_solutions]['solution'][solution_keys_list[j]]
                 Solutions_mod = Solutions(solution_to_mutate)
-                a, b, randomized_total_of_workers = Solutions_mod.random_total_of_worker()
-                return a, b, randomized_total_of_workers
-
+                randomized_total_of_workers = Solutions_mod.random_total_of_worker()
+                
                 # mutation process starts here
-                # solutions[k_solutions]['solution'][solution_keys_list[j]][constants.Q_COLUMN_INDEX_NAME] = 'bbbbb'
+                solutions[k_solutions]['solution'][solution_keys_list[j]][constants.Q_COLUMN_INDEX_NAME] = randomized_total_of_workers
         
         return solutions
 
