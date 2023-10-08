@@ -4,6 +4,7 @@ MAIN_EXCEL_SHEET_NAME = "Template Format Utama"
 TOTAL_INDIVIDUAL_PER_POPULATION = 10
 ELITIST_SOLUTION_PERCENTAGE_TO_TAKE = 30 #in percentage (%) of total per population
 PERCENTAGE_OF_GEN_TO_MUTATE = 30 #in percentage (%) of total solution per individual
+TERMINATION_THRESHOLD = 1000 # in integer, meaning X loops
 
 E_COLUMN_INDEX_NAME = "[E]targeted_unit_amount"
 L_COLUMN_INDEX_NAME = "[L]unit_defined_price"
