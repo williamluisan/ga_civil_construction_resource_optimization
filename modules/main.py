@@ -17,6 +17,7 @@ class Main:
     FitnessFunction = FitnessFunction()
 
     def execute():
+        print(f"Begin finding the best solution with {constants.TOTAL_INDIVIDUAL_PER_POPULATION} individual/perpulation and termination treshold = {constants.TERMINATION_THRESHOLD}")
         start_time = time.time()
 
         # the main index of the dictionary will be the excel row number
