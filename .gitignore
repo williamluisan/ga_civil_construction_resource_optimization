@@ -2,3 +2,4 @@
 ~*
 python_venv/
 __pycache__/
+files/solution/*

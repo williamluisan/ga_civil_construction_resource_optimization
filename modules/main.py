@@ -1,3 +1,4 @@
+from datetime import datetime
 from modules.file import File
 from modules.libraries_example.pygad_ai_generated import Pygad
 from modules.libraries_example.deap_ai_generated import Deap
@@ -10,6 +11,7 @@ from domain.genetic_algorithm.selection import *
 from domain.genetic_algorithm.crossover import *
 from domain.genetic_algorithm.mutation import *
 import config.constants as constants
+import helpers.file as h_file
 import time
 
 class Main:
@@ -87,11 +89,45 @@ class Main:
                     execution_time = end_time - start_time
 
                     print("Best solution found by reached the termination threshold.")
+
+                    ## write solution to the excel file
+                    # prepare the solution file
+                    current_time = datetime.now().strftime("%Y%m%d%H%M%S")
+                    solution_file = h_file.copy_file("./files/template_format_solution.xlsx", f"./files/solution/{current_time}_solution.xlsx")
+                    if solution_file is False:
+                        return "Failed to prepare the solution file."
+                    Loaded_Solution_File = File(solution_file, constants.MAIN_EXCEL_SHEET_NAME)
+                    
+                    # write to file
+                    solution_to_write = best_solution['solution']
+                    solution_result_to_write = best_solution['result']
+                    workbook = Loaded_Solution_File.loaded_workbook()
+                    sheet = Loaded_Solution_File.loaded_sheet()
+                    for v_stw in solution_to_write:
+                        O_cell_reference = f'O{v_stw}'
+                        Q_cell_reference = f'Q{v_stw}'
+                        R_cell_reference = f'R{v_stw}'
+                        T_cell_reference = f'T{v_stw}'
+                        # O_cell_value = "{:.2f}".format(solution_to_write[v_stw][constants.O_COLUMN_INDEX_NAME])
+                        O_cell_value = round(solution_to_write[v_stw][constants.O_COLUMN_INDEX_NAME], 2)
+                        # T_cell_value = "IDR {:,.2f}".format(solution_to_write[v_stw][constants.T_COLUMN_INDEX_NAME])
+                        T_cell_value = solution_to_write[v_stw][constants.T_COLUMN_INDEX_NAME]
+                        sheet[O_cell_reference] = O_cell_value
+                        sheet[Q_cell_reference] = solution_to_write[v_stw][constants.Q_COLUMN_INDEX_NAME]
+                        sheet[R_cell_reference] = solution_to_write[v_stw][constants.R_COLUMN_INDEX_NAME]
+                        sheet[T_cell_reference] = T_cell_value
+                    sheet['W4'] = solution_result_to_write["total_of_workers"]
+                    sheet['W5'] = solution_result_to_write["total_days_of_working"]
+                    sheet['W6'] = solution_result_to_write["total_cost_of_workers"]
+                    workbook.save(Loaded_Solution_File.get_filename())
+                    ## //
+
                     return (
                         "Execution time: " + str(execution_time)
                         , "Best solution's efficiency value: " + str(best_solution_efficiency_value)
                         , "Total population: " + str(population_counter)
                         , "Total invididual: " + str(individual_counter)
+                        , "Saved on file: " + str(Loaded_Solution_File.get_filename())
                         , best_solution
                     )
                 
