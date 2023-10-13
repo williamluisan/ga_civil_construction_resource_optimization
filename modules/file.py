@@ -29,3 +29,24 @@ class File:
     
     def get_max_column(self) -> int:
         return self._sheet.max_column 
+    
+    def write_solution_to_file(self, solution_to_write: dict, solution_result_to_write: dict) -> any:
+        workbook = self.loaded_workbook()
+        sheet = self.loaded_sheet()
+        for v_stw in solution_to_write:
+            O_cell_reference = f'O{v_stw}'
+            Q_cell_reference = f'Q{v_stw}'
+            R_cell_reference = f'R{v_stw}'
+            S_cell_reference = f'S{v_stw}'
+            T_cell_reference = f'T{v_stw}'
+            O_cell_value = round(solution_to_write[v_stw][constants.O_COLUMN_INDEX_NAME], 2)
+            R_cell_value = round(solution_to_write[v_stw][constants.R_COLUMN_INDEX_NAME], 2)
+            sheet[O_cell_reference] = O_cell_value
+            sheet[Q_cell_reference] = solution_to_write[v_stw][constants.Q_COLUMN_INDEX_NAME]
+            sheet[R_cell_reference] = R_cell_value
+            sheet[S_cell_reference] = constants.S_COLUMN_VALUE
+            sheet[T_cell_reference] = solution_to_write[v_stw][constants.T_COLUMN_INDEX_NAME]
+        sheet['W4'] = solution_result_to_write["total_of_workers"]
+        sheet['W5'] = solution_result_to_write["total_days_of_working"]
+        sheet['W6'] = solution_result_to_write["total_cost_of_workers"]
+        workbook.save(self.get_filename())

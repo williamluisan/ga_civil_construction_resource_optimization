@@ -24,9 +24,7 @@ class Main:
 
         # the main index of the dictionary will be the excel row number
         first_individual = Individual.create_first_individual(Main.File)
-        # close the main file
-        print(File.loaded_workbook().close())
-        return 1
+
         # create random solutions
         Solutions_mod = Solutions(first_individual)
         first_solution = Solutions_mod.create_random_solutions()
@@ -93,35 +91,14 @@ class Main:
                     print("Best solution found by reached the termination threshold.")
 
                     ## write solution to the excel file
-                    # prepare the solution file
                     current_time = datetime.now().strftime("%Y%m%d%H%M%S")
                     solution_file = h_file.copy_file(constants.MAIN_EXCEL_FILENAME, f"./files/solution/{current_time}_solution.xlsx")
                     if solution_file is False:
                         return "Failed to prepare the solution file."
                     Loaded_Solution_File = File(solution_file, constants.MAIN_EXCEL_SHEET_NAME)
-                    
-                    # write to file
                     solution_to_write = best_solution['solution']
                     solution_result_to_write = best_solution['result']
-                    workbook = Loaded_Solution_File.loaded_workbook()
-                    sheet = Loaded_Solution_File.loaded_sheet()
-                    for v_stw in solution_to_write:
-                        O_cell_reference = f'O{v_stw}'
-                        Q_cell_reference = f'Q{v_stw}'
-                        R_cell_reference = f'R{v_stw}'
-                        T_cell_reference = f'T{v_stw}'
-                        # O_cell_value = "{:.2f}".format(solution_to_write[v_stw][constants.O_COLUMN_INDEX_NAME])
-                        O_cell_value = round(solution_to_write[v_stw][constants.O_COLUMN_INDEX_NAME], 2)
-                        # T_cell_value = "IDR {:,.2f}".format(solution_to_write[v_stw][constants.T_COLUMN_INDEX_NAME])
-                        T_cell_value = solution_to_write[v_stw][constants.T_COLUMN_INDEX_NAME]
-                        sheet[O_cell_reference] = O_cell_value
-                        sheet[Q_cell_reference] = solution_to_write[v_stw][constants.Q_COLUMN_INDEX_NAME]
-                        sheet[R_cell_reference] = solution_to_write[v_stw][constants.R_COLUMN_INDEX_NAME]
-                        sheet[T_cell_reference] = T_cell_value
-                    sheet['W4'] = solution_result_to_write["total_of_workers"]
-                    sheet['W5'] = solution_result_to_write["total_days_of_working"]
-                    sheet['W6'] = solution_result_to_write["total_cost_of_workers"]
-                    workbook.save(Loaded_Solution_File.get_filename())
+                    Loaded_Solution_File.write_solution_to_file(solution_to_write, solution_result_to_write)
                     ## //
 
                     return (
