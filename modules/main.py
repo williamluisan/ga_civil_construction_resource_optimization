@@ -17,7 +17,7 @@ class Main:
     FitnessFunction = FitnessFunction()
 
     def execute():
-        print(f"Begin finding the best solution with {constants.TOTAL_INDIVIDUAL_PER_POPULATION} individual/perpulation and termination treshold = {constants.TERMINATION_THRESHOLD}")
+        print(f"Begin finding the best solution with {constants.TOTAL_INDIVIDUAL_PER_POPULATION} individual/population and termination treshold = {constants.TERMINATION_THRESHOLD}")
         start_time = time.time()
 
         # the main index of the dictionary will be the excel row number
@@ -87,7 +87,13 @@ class Main:
                     execution_time = end_time - start_time
 
                     print("Best solution found by reached the termination threshold.")
-                    return execution_time, best_solution_efficiency_value, population_counter, individual_counter, best_solution
+                    return (
+                        "Execution time: " + str(execution_time)
+                        , "Best solution's efficiency value: " + str(best_solution_efficiency_value)
+                        , "Total population: " + str(population_counter)
+                        , "Total invididual: " + str(individual_counter)
+                        , best_solution
+                    )
                 
                 termination_threshold_counter += 1
             ## //
