@@ -24,7 +24,9 @@ class Main:
 
         # the main index of the dictionary will be the excel row number
         first_individual = Individual.create_first_individual(Main.File)
-
+        # close the main file
+        print(File.loaded_workbook().close())
+        return 1
         # create random solutions
         Solutions_mod = Solutions(first_individual)
         first_solution = Solutions_mod.create_random_solutions()
@@ -93,7 +95,7 @@ class Main:
                     ## write solution to the excel file
                     # prepare the solution file
                     current_time = datetime.now().strftime("%Y%m%d%H%M%S")
-                    solution_file = h_file.copy_file("./files/template_format_solution.xlsx", f"./files/solution/{current_time}_solution.xlsx")
+                    solution_file = h_file.copy_file(constants.MAIN_EXCEL_FILENAME, f"./files/solution/{current_time}_solution.xlsx")
                     if solution_file is False:
                         return "Failed to prepare the solution file."
                     Loaded_Solution_File = File(solution_file, constants.MAIN_EXCEL_SHEET_NAME)
