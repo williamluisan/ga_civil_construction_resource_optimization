@@ -109,7 +109,7 @@ class Main:
                         , "Best solution's efficiency value: " + str(best_solution_efficiency_value)
                         , "Best individual's number: " + str(best_individual_number)
                         , "Total population: " + str(population_counter)
-                        , "Total invididual: " + str(individual_counter)
+                        , "Total individual: " + str(individual_counter)
                         , "Saved on file: " + str(Loaded_Solution_File.get_filename())
                         , best_solution
                     )

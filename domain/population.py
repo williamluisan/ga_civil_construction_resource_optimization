@@ -42,7 +42,7 @@ class Population:
         , assumed_max_total_days_of_working: float = 0
         , assumed_best_solution_total_cost_of_workers: float = 0
     ) -> list:
-        # calculate values for invidiual fitness first
+        # calculate values for individual fitness first
         population = self.calculate_values_for_individual_fitness()
         
         population_with_result = []
