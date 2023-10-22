@@ -87,6 +87,9 @@ class Main:
                 if termination_threshold_counter == constants.TERMINATION_THRESHOLD:
                     end_time = time.time()
                     execution_time = end_time - start_time
+                    execution_time_str = "{:.2f} seconds".format(execution_time)
+
+                    best_individual_number = best_solution['id']
 
                     print("Best solution found by reached the termination threshold.")
 
@@ -102,8 +105,9 @@ class Main:
                     ## //
 
                     return (
-                        "Execution time: " + str(execution_time)
+                        "Execution time: " + execution_time_str
                         , "Best solution's efficiency value: " + str(best_solution_efficiency_value)
+                        , "Best individual's number: " + str(best_individual_number)
                         , "Total population: " + str(population_counter)
                         , "Total invididual: " + str(individual_counter)
                         , "Saved on file: " + str(Loaded_Solution_File.get_filename())
