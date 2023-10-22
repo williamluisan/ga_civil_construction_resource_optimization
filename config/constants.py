@@ -1,7 +1,6 @@
 MAIN_EXCEL_FILENAME = "./files/template_format.xlsx"
 MAIN_EXCEL_SHEET_NAME = "Template Format Utama"
 
-## dummy
 TERMINATION_THRESHOLD = 10000 # in integer, meaning X loops
 TOTAL_INDIVIDUAL_PER_POPULATION = 50
 ELITIST_SOLUTION_PERCENTAGE_TO_TAKE = 30 #in percentage (%) of total per population
