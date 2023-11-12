@@ -41,17 +41,17 @@ class General:
         max_total_worker = data[constants.E_COLUMN_INDEX_NAME] / data[constants.O_COLUMN_INDEX_NAME]
         if max_total_worker >= 1:
             max_total_worker_to_random = math.floor(max_total_worker)
+            # min total worker is the half of max total worker
+            min_total_worker_to_random = math.ceil(max_total_worker_to_random / constants.MINIMUM_WORKER_RANDOM_DIVIDER_TO_MAX_WORKER_RANDOM)
 
         if max_total_worker < 1:
             max_total_worker_to_random = math.ceil(max_total_worker)
+            min_total_worker_to_random = 0
     
-        # if max_total_worker_to_random == min_total_worker_to_random:
-            # return 1
-
-        if max_total_worker_to_random <= min_total_worker_to_random:
+        if max_total_worker_to_random == min_total_worker_to_random:
             min_total_worker_to_random = max_total_worker_to_random - 1
         
-        if min_total_worker_to_random == 0:
+        if min_total_worker_to_random <= 0:
             return max_total_worker_to_random
 
         randomized_total_of_worker = np.random.randint(min_total_worker_to_random, max_total_worker_to_random)
