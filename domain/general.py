@@ -36,7 +36,7 @@ class General:
             print("Unable to randomize the total of workers using the provided dictionary.")
             exit()
 
-        min_total_worker_to_random = max_total_worker_to_random = 1
+        min_total_worker_to_random = max_total_worker_to_random = constants.MINIMUM_WORKER_TO_RANDOM
 
         max_total_worker = data[constants.E_COLUMN_INDEX_NAME] / data[constants.O_COLUMN_INDEX_NAME]
         if max_total_worker >= 1:
@@ -45,9 +45,15 @@ class General:
         if max_total_worker < 1:
             max_total_worker_to_random = math.ceil(max_total_worker)
     
-        if max_total_worker_to_random == min_total_worker_to_random:
-            return 1
+        # if max_total_worker_to_random == min_total_worker_to_random:
+            # return 1
+
+        if max_total_worker_to_random <= min_total_worker_to_random:
+            min_total_worker_to_random = max_total_worker_to_random - 1
         
+        if min_total_worker_to_random == 0:
+            return max_total_worker_to_random
+
         randomized_total_of_worker = np.random.randint(min_total_worker_to_random, max_total_worker_to_random)
 
         return randomized_total_of_worker
