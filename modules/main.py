@@ -12,6 +12,7 @@ from domain.genetic_algorithm.crossover import *
 from domain.genetic_algorithm.mutation import *
 import config.constants as constants
 import helpers.file as h_file
+import helpers.general as h_general
 import time
 
 class Main:
@@ -24,6 +25,8 @@ class Main:
 
         # the main index of the dictionary will be the excel row number
         first_individual = Individual.create_first_individual(Main.File)
+        h_general.json_dumps_pretty_print(first_individual)
+        exit
 
         # create random solutions
         Solutions_mod = Solutions(first_individual)
