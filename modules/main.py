@@ -25,8 +25,6 @@ class Main:
 
         # the main index of the dictionary will be the excel row number
         first_individual = Individual.create_first_individual(Main.File)
-        h_general.json_dumps_pretty_print(first_individual)
-        exit
 
         # create random solutions
         Solutions_mod = Solutions(first_individual)
@@ -73,6 +71,8 @@ class Main:
             # initiate new solution
             solution = solution_elitist
             ## //
+            h_general.json_dumps_pretty_print(len(solution_selected_for_crossover))
+            exit()
 
             ## termination process
             possible_best_solution = copy.deepcopy(solution_elitist[0])
