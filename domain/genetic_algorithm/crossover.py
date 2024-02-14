@@ -18,8 +18,6 @@ class Crossover:
 
         solution_data_structure_sample = self.solution_data_structure_sample
         selected_solution_list = self.convert_selected_solution_to_list_of_total_of_workers()
-        h_general.json_dumps_pretty_print(selected_solution_list)
-        exit()
 
         total_count_selected_solution_list = len(selected_solution_list)
         half_length_of_solution = len(selected_solution_list[0]) // 2
