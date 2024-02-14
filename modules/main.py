@@ -71,9 +71,7 @@ class Main:
             # initiate new solution
             solution = solution_elitist
             ## //
-            h_general.json_dumps_pretty_print(len(solution_selected_for_crossover))
-            exit()
-
+            
             ## termination process
             possible_best_solution = copy.deepcopy(solution_elitist[0])
             possible_best_solution_efficiency_value = possible_best_solution['efficiency_value']
