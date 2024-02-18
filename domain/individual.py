@@ -48,19 +48,19 @@ class Individual:
                 total_days_of_working = General.get_total_days_to_work_by_total_workers_compare_to_targeted_units(
                     capability_of_one_day_work_per_one_worker, total_of_workers, targeted_unit_amount
                 )
-                # total_cost_by_unit_defined_price_and_total_of_workers = General.get_total_cost_by_unit_defined_price_and_total_of_workers(
-                #     unit_defined_price, total_of_workers
-                # )
+                total_cost_by_unit_defined_price_and_total_of_workers = General.get_total_cost_by_unit_defined_price_and_total_of_workers(
+                    unit_defined_price, total_of_workers
+                )
 
-                # # row number as main index of the dictionary
+                # row number as main index of the dictionary
                 result[str(row_number)] = {
                     'type': K_val,
                     constants.E_COLUMN_INDEX_NAME: targeted_unit_amount,
                     constants.L_COLUMN_INDEX_NAME: unit_defined_price,
                     constants.O_COLUMN_INDEX_NAME: capability_of_one_day_work_per_one_worker,
-                #     constants.Q_COLUMN_INDEX_NAME: total_of_workers,
-                #     constants.R_COLUMN_INDEX_NAME: total_days_of_working,
-                #     constants.T_COLUMN_INDEX_NAME: total_cost_by_unit_defined_price_and_total_of_workers
+                    constants.Q_COLUMN_INDEX_NAME: total_of_workers,
+                    constants.R_COLUMN_INDEX_NAME: total_days_of_working,
+                    constants.T_COLUMN_INDEX_NAME: total_cost_by_unit_defined_price_and_total_of_workers
                 }
         
         return result
