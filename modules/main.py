@@ -25,11 +25,11 @@ class Main:
 
         # the main index of the dictionary will be the excel row number
         first_individual = Individual.create_first_individual(Main.File)
+        return first_individual
 
         # create random solutions
         Solutions_mod = Solutions(first_individual)
         first_solution = Solutions_mod.create_random_solutions()
-        return first_solution
         Population_mod = Population(first_solution)
         first_solution = Population_mod.calculate_values_for_individual_fitness()
 
