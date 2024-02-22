@@ -94,7 +94,7 @@ class Main:
 
                     best_individual_number = best_solution['id']
 
-                    print("Best solution found by reached the termination threshold")
+                    print("Best solution found by reached the termination threshold in " + execution_time_str)
 
                     ## write solution to the excel file
                     current_time = datetime.now().strftime("%Y%m%d%H%M%S")
