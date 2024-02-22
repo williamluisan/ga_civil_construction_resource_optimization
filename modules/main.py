@@ -54,6 +54,8 @@ class Main:
         best_solution_efficiency_value = 0
         termination_threshold_counter = 0
         while True:
+            print("Generation: " + str(population_counter) + " (threshold: " + str(termination_threshold_counter) + ")")
+
             ## fitness
             Population_mod = Population(solution)
             solution = Population_mod.calculate_fitness_result_and_efficiency_value(
@@ -93,7 +95,7 @@ class Main:
 
                     best_individual_number = best_solution['id']
 
-                    print("Best solution found by reached the termination threshold.")
+                    print("Best solution found by reached the termination threshold in " + execution_time_str)
 
                     ## write solution to the excel file
                     current_time = datetime.now().strftime("%Y%m%d%H%M%S")

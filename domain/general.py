@@ -56,4 +56,5 @@ class General:
 
         randomized_total_of_worker = np.random.randint(min_total_worker_to_random, max_total_worker_to_random)
 
+        # return randomized_total_of_worker, min_total_worker_to_random, max_total_worker_to_random
         return randomized_total_of_worker

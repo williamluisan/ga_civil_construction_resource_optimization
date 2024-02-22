@@ -13,18 +13,35 @@ class Individual:
             E_val = row[h_general.letter_to_array_index("E")].value
             I_val = row[h_general.letter_to_array_index("I")].value
             J_val = row[h_general.letter_to_array_index("J")].value
-            K_val_value = row[h_general.letter_to_array_index("K")].value
+            K_val = row[h_general.letter_to_array_index("K")].value
             L_val = row[h_general.letter_to_array_index("L")].value
-            if K_val_value is not None:
-                K_val = K_val_value.strip()
+            if K_val is not None:
+                K_val = K_val.strip()
+                K_val_lower = K_val.lower()
+            
+            # check valid row to return
+            valid_row = False
+            if J_val == "OH":
+                if K_val == "Pekerja":
+                    valid_row = True
+                find_tukang = K_val_lower.find("tukang")
+                if find_tukang != -1:
+                    if K_val_lower != "kepala tukang":
+                        valid_row = True
+
+            # new value assignation for column
+            if D_val is not None:
+                D_val_value = D_val
+            if E_val is not None:
+                E_val_value = E_val
 
             # create initial individual and it's initial calculation
             # (data crawled from rows that met certain condition) 
-            if J_val == "OH" and K_val == "Pekerja":
+            if valid_row:
                 capability_of_one_day_work_per_one_worker, P_val = General.get_capability_of_one_worker_to_complete_in_one_day_compare_to_targeted_unit(
-                    float(I_val), D_val
+                    float(I_val), D_val_value
                 )
-                targeted_unit_amount = float(E_val)
+                targeted_unit_amount = float(E_val_value)
                 unit_defined_price = L_val
 
                 total_of_workers = 1
@@ -37,6 +54,7 @@ class Individual:
 
                 # row number as main index of the dictionary
                 result[str(row_number)] = {
+                    'type': K_val,
                     constants.E_COLUMN_INDEX_NAME: targeted_unit_amount,
                     constants.L_COLUMN_INDEX_NAME: unit_defined_price,
                     constants.O_COLUMN_INDEX_NAME: capability_of_one_day_work_per_one_worker,
