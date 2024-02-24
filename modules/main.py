@@ -25,7 +25,6 @@ class Main:
 
         # the main index of the dictionary will be the excel row number
         first_individual = Individual.create_first_individual(Main.File)
-        return first_individual
 
         # create random solutions
         Solutions_mod = Solutions(first_individual)
