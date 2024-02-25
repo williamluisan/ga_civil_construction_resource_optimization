@@ -44,7 +44,7 @@ class Main:
         assumed_best_solution_total_of_workers = solution_one_worker_only_all_task['result']['total_of_workers']
         assumed_max_total_days_of_working = solution_one_worker_only_all_task['result']['total_days_of_working']
         assumed_best_solution_total_cost_of_workers = solution_one_worker_only_all_task['result']['total_cost_of_workers']
-    
+        
         # GA loop starts (to find the best solution, then stop)
         population_counter = 0
         individual_counter = 0
