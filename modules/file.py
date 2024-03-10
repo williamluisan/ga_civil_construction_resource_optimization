@@ -46,7 +46,7 @@ class File:
             sheet[R_cell_reference] = R_cell_value
             sheet[S_cell_reference] = constants.S_COLUMN_VALUE
             sheet[T_cell_reference] = solution_to_write[v_stw][constants.T_COLUMN_INDEX_NAME]
-        sheet['W4'] = solution_result_to_write["total_of_workers"]
-        sheet['W5'] = solution_result_to_write["total_days_of_working"]
-        sheet['W6'] = solution_result_to_write["total_cost_of_workers"]
+        sheet['Z4'] = solution_result_to_write["total_of_workers"]
+        sheet['Z5'] = solution_result_to_write["total_days_of_working"]
+        sheet['Z6'] = solution_result_to_write["total_cost_of_workers"]
         workbook.save(self.get_filename())
