@@ -91,9 +91,8 @@ class Main:
                     ## calculate price comparison RAB vs app
                     best_solution_solution = best_solution["solution"]
                     Population_mod = Population(best_solution_solution)
-                    price_comparison = Population_mod.calculate_price_comparison()
-                    return price_comparison
-
+                    best_solution["solution"] = Population_mod.calculate_price_comparison_rab_app()
+                    
                     end_time = time.time()
                     execution_time = end_time - start_time
                     execution_time_str = "{:.2f} seconds".format(execution_time)

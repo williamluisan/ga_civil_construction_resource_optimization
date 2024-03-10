@@ -71,11 +71,37 @@ class Population:
         return population_with_result
 
 
-    def calculate_price_comparison(self) -> list:
+    def calculate_price_comparison_rab_app(self) -> list:
         """
         To calculate the price comparison of RAB and App
         """
         population = self.data
-        
+
+        total_rab_price = 0
+        total_app_price = 0
+        excel_row_number = 0
         for idx, individual in population.items():
-            return individual
+            if excel_row_number != individual["excel_row_number"]:
+                excel_row_number = individual["excel_row_number"]
+                total_rab_price = 0
+                total_app_price = 0
+                idx_filled = 0
+                targeted_unit_amount = individual[constants.E_COLUMN_INDEX_NAME]
+
+            if excel_row_number == individual["excel_row_number"]:
+                if individual[constants.M_COLUMN_INDEX_NAME] is not None:
+                    total_rab_price += individual[constants.M_COLUMN_INDEX_NAME]
+                    total_app_price += individual[constants.T_COLUMN_INDEX_NAME]
+                    individual[constants.V_COLUMN_INDEX_NAME] = total_rab_price * targeted_unit_amount
+                    individual[constants.W_COLUMN_INDEX_NAME] = total_app_price
+
+                    ## reset previous rab price
+                    if idx_filled in population:
+                        population[idx_filled][constants.V_COLUMN_INDEX_NAME] = "next"
+                        population[idx_filled][constants.W_COLUMN_INDEX_NAME] = "next"
+                    idx_filled = idx
+                else:
+                    individual[constants.V_COLUMN_INDEX_NAME] = None
+                    individual[constants.W_COLUMN_INDEX_NAME] = None
+        
+        return population
