@@ -10,6 +10,7 @@ MINIMUM_WORKER_RANDOM_DIVIDER_TO_MAX_WORKER_RANDOM = 2 # this value will divide 
 
 E_COLUMN_INDEX_NAME = "[E]targeted_unit_amount"
 L_COLUMN_INDEX_NAME = "[L]unit_defined_price"
+M_COLUMN_INDEX_NAME = "[M]rab_price"
 O_COLUMN_INDEX_NAME = "[O]capability_of_one_day_work_per_one_worker"
 Q_COLUMN_INDEX_NAME = "[Q]total_of_workers"
 R_COLUMN_INDEX_NAME = "[R]total_days_of_working"

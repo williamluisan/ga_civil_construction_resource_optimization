@@ -69,3 +69,13 @@ class Population:
             population_with_result.append(v_solution)
 
         return population_with_result
+
+
+    def calculate_price_comparison(self) -> list:
+        """
+        To calculate the price comparison of RAB and App
+        """
+        population = self.data
+        
+        for idx, individual in population.items():
+            return individual
