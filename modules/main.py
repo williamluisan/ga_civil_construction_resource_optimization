@@ -15,7 +15,7 @@ import helpers.file as h_file
 import helpers.general as h_general
 import time
 
-class Main:
+class Main: 
     File = File(constants.MAIN_EXCEL_FILENAME, constants.MAIN_EXCEL_SHEET_NAME) # load the main file
     FitnessFunction = FitnessFunction()
 
